@@ -7,7 +7,7 @@ namespace Entities.Concrete
 {
     public class UserImage : IEntity
     {
-        public int ImageId { get; set; }
+        public int UserImageId { get; set; }
         public int UserId { get; set; }
         public string ImagePath { get; set; }
         public DateTime UserImageDate { get; set; }
