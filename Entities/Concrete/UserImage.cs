@@ -10,6 +10,7 @@ namespace Entities.Concrete
         public int UserImageId { get; set; }
         public int UserId { get; set; }
         public string ImagePath { get; set; }
+        public string ProfileImage { get; set; }
         public DateTime UserImageDate { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public IActionResult Update([FromForm(Name = "Image")] IFormFile file, [FromForm(Name = ("Id"))] int Id)
         {
             var userImages = _userImageService.GetById(Id).Data;
@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
         public IActionResult Delete([FromForm(Name = "Id")] int Id)
         {
             var forDelete = _userImageService.GetById(Id).Data;
@@ -94,6 +94,27 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("profileimageadd")]
+        public IActionResult ProfileImageAdd([FromForm(Name = "Image")] IFormFile file, [FromForm] UserImage userImage)
+        {
+            var result = _userImageService.ProfileImageAdd(file, userImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("profileimagedelete")]
+        public IActionResult ProfileImageDelete([FromForm(Name = "Id")] int Id)
+        {
+            var forDelete = _userImageService.GetById(Id).Data;
+            var result = _userImageService.ProfileImageDelete(forDelete);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
 
 
